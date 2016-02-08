@@ -5,7 +5,6 @@ Characters are (by default) Objects setup to be puppeted by Players.
 They are what you "see" in game. The Character class in this module
 is setup to be the "default" character type created by the default
 creation commands.
-
 """
 from evennia import DefaultCharacter
 
@@ -26,6 +25,32 @@ class Character(DefaultCharacter):
     at_pre_puppet - just before Player re-connects, retrieves the character's
                     old location and puts it back on the grid with a "charname
                     has connected" message echoed to the room
-
     """
     pass
+
+    def at_object_creation(self):
+        """
+        Called only at initial creation. This is a rather silly
+        example since ability scores should vary from Character to
+        Character and is usually set during some character 
+        generation step instead.
+        """
+        
+        #set persistent attributes
+        self.db.alignment = 0
+        
+        #set start skill dictionary
+        self.db.skills = {'Combat': 0}
+        
+        self.db.baseStrength = 5
+        self.db.baseDexterity = 4
+        self.db.baseWisdom = 2
+        self.db.modStrength = 0
+        self.db.modDexterity = 0
+        self.db.modWisdom = 0
+
+    def get_score(self):
+        return self.db.baseStrength, self.db.baseDexterity, self.db.baseWisdom, self.db.modStrength, self.db.modDexterity, self.db.modWisdom, self.db.alignment
+    
+    
+        

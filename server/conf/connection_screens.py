@@ -19,29 +19,19 @@ from django.conf import settings
 from evennia import utils
 
 CONNECTION_SCREEN = \
-"""{l==========================================================={n
-                               __       __  __    __  _______  
-                              /  \     /  |/  |  /  |/       \ 
-  ______   __     __  ______  $$  \   /$$ |$$ |  $$ |$$$$$$$  |
- /      \ /  \   /  |/      \ $$$  \ /$$$ |$$ |  $$ |$$ |  $$ |
-/$$$$$$  |$$  \ /$$//$$$$$$  |$$$$  /$$$$ |$$ |  $$ |$$ |  $$ |
-$$    $$ | $$  /$$/ $$ |  $$ |$$ $$ $$/$$ |$$ |  $$ |$$ |  $$ |
-$$$$$$$$/   $$ $$/  $$ \__$$ |$$ |$$$/ $$ |$$ \__$$ |$$ |__$$ |
-$$       |   $$$/   $$    $$/ $$ | $/  $$ |$$    $$/ $$    $$/ 
- $$$$$$$/     $/     $$$$$$/  $$/      $$/  $$$$$$/  $$$$$$$/  
-                                                               
-                                                              
- Welcome to {g%s{n, version %s!
+"""
+{b================================================================={n
+Welcome to {g%s{n, version %s!
+Coded and Designed by MisterMoxxie
+Based on Evennia by Griatch."
 
- If you have an existing account, connect to it by typing:
-      {wconnect <username> <password>{n
- If you need to create an account, type (without the <>'s):
-      {wcreate <username> <password>{n
 
- If you have spaces in your username, enclose it in quotes.
- Enter {whelp{n for more info. {wlook{n will re-show this screen.
-{b=============================================================={n""" \
- % (settings.SERVERNAME, utils.get_evennia_version())
+If you have an existing account, connect to it by typing:
+     {wconnect <username> <password>{n
+If you need to create an account, type (without the <>'s):
+     {wcreate <username> <password>{n
+# If you have spaces in your username, enclose it in quotes.
 
- 
-                                                           
+Enter {whelp{n for more info. {wlook{n will re-show this screen.
+{b================================================================={n
+""" % (settings.SERVERNAME, utils.get_evennia_version())

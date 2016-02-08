@@ -16,6 +16,9 @@ own cmdsets by inheriting from them or directly from `evennia.CmdSet`.
 
 from evennia import default_cmds
 
+from commands.command import CmdScore
+from commands.command import CmdSkills
+
 class CharacterCmdSet(default_cmds.CharacterCmdSet):
     """
     The `CharacterCmdSet` contains general in-game commands like `look`,
@@ -51,7 +54,8 @@ class PlayerCmdSet(default_cmds.PlayerCmdSet):
         #
         # any commands you add below will overload the default ones.
         #
-
+        self.add(CmdScore())
+        self.add(CmdSkills())
 
 class UnloggedinCmdSet(default_cmds.UnloggedinCmdSet):
     """

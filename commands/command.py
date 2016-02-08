@@ -136,3 +136,53 @@ class MuxCommand(default_cmds.MuxCommand):
         # this can be removed in your child class, it's just
         # printing the ingoing variables as a demo.
         super(MuxCommand, self).func()
+
+
+
+class CmdScore(Command):
+    """
+    List score
+
+    Usage:
+      score
+
+    Displays a list of your current ability values.
+    """
+    key = "score"
+    aliases = []
+    lock = "cmd:all()"
+    help_category = "General"
+
+    def func(self):
+        "implements the actual functionality"
+
+        bstr, bdex, bwis, mstr, mdex, mwis, align = self.caller.get_score()
+        string = (
+        "\n\n"
+        "STR : %(bs)s(+%(ms)s) DEX : %(bd)s(+%(md)s) WIS : %(bw)s(+%(mw)s)\n"
+        "Alignment : %(al)s\n"
+        "\n\n"
+        ) % {'bs': bstr, 'bd': bdex, 'bw': bwis, 'ms': mstr, 'md': mdex, 'mw': mwis, 'al': align}
+        self.caller.msg(string)
+        
+class CmdSkills(Command):
+    """
+    List skills
+    
+    Usage:
+      skills
+      
+    Displays a list of all of your known skills, and their values.
+    """
+    key = "skills"
+    aliases = []
+    lock = "cmd:all()"
+    help_category = "General"
+    
+    def func(self):
+        "implements the actual functionality"
+        
+        d = self.caller.db.skills
+        for key, value in d.items():
+            self.caller.msg('%s : %r' % (key, value))
+        
